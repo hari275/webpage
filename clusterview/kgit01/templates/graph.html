@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>cluster app</title>
+	<meta charset="utf-8" />
+<!--{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'kgit01/css/bootstrap.min.css' %}" type = "text/css"/>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0"> -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+
+	<style type="text/css">
+		html,
+		body {
+		  height:100%;width:100;
+		}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 15%;}
+.col-4 {width: 0%;}
+.col-5 {width: 0%;}
+.col-6 {width: 0%;}
+.col-7 {width: 0%;}
+.col-8 {width: 0%;}
+.col-9 {width: 75%;}
+.col-10 {width: 0%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+.header {text-align: center;
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+    background-color: #0099cc;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ClusterView</h1>
+</div>
+
+<div class="row">
+
+<div class="col-3 menu">
+ <li><a href='kgit01/home' class="button">table</a></li>
+				<li><a href='kgit01/upload1' class="button">upload1</button></a>
+				<li><a href='kgit01/graph' class="button">graph</button></a>
+                                <li><a href='kgit01/graph2' class="button">graph2</a></li>
+                                <li><a href='kgit01/graph3' class="button">graph3</a></li>
+			  </ul>
+</div>
+
+<div class="col-9">
+
+
+   {% if graph %}
+<div style="width:100;height:100">
+{{ graph|safe }}
+</div>
+{% endif %}
+
+<div id="grid" style="width: 70%; height: 350px;"></div>
+
+<script type="text/javascript">
+{% autoescape off %}
+ var json_data =  {{ df|safe }};
+ var json_data2 = {{ df2|safe }};
+ var json_data3 = {{ df3|safe }};
+{% endautoescape %}
+$(function () {
+        $('#grid').w2grid({
+
+        name: 'grid',
+        // need this to avoid 412 error on Safari
+        columns: [
+           // { field: 'recid', caption: 'RecID',size: '20%' },
+            { field: 'Species', caption: 'Species', size: '120px' },
+            { field: 'SepalLength', caption: 'SepalLength', size: '30%' },
+            { field: 'PetalWidth', caption: 'PetalWidth', size: '40%' },
+            { field: 'PetalLength', caption: 'PetalLength', size: '120px' },
+            { field: 'PetalWidth', caption: 'PetalWidth', size: '120px' },
+
+
+
+        ],
+
+
+        records: [
+            { recid: 1,Species:'setosa', SepalLength: '', PetalWidth: '', PetalLength: '', PetalWidth: '',w2ui: { children: json_data }}
+           { recid: 2,Species:'versicolor', SepalLength: '', PetalWidth: '', PetalLength: '', PetalWidth: '',w2ui: { children: json_data2 }},
+           { recid: 3,Species:'virginica', SepalLength: '', PetalWidth: '', PetalLength: '', PetalWidth: '',w2ui: { children: json_data3 }}
+            ]
+
+                  //json_data
+
+
+
+
+
+
+
+    });
+});
+</script>
+
+
+
+{% include 'footer.html' %}
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<title>Clustering Engine</title>
+		<link rel="icon" type="image/png" href="/media/img/favicon.png">
+
+        <!-- CSS Files -->
+        <!-- Template CSS Files -->
+        <link type="text/css" media="all" rel="stylesheet" href="/media/css/layout.css">
+		<link type="text/css" rel="stylesheet" href="/media/css/style.css">
+		<link type="text/css" rel="stylesheet" href="/media/css/input.css">
+		<link type="text/css" rel="stylesheet" href="/media/css/content.css">
+
+        <!-- Table CSS Files -->
+		<link type="text/css" rel="stylesheet" href="/media/css/w2ui-min.css">
+
+		<!-- File Folder Tree Structure CSS Files -->
+		<link href="http://wwwendt.de/tech/fancytree/src/skin-win8/ui.fancytree.css" rel="stylesheet">
+        <link href="http://wwwendt.de/tech/fancytree/src/skin-vista/ui.fancytree.css" rel="stylesheet">
+        <link href="http://wwwendt.de/tech/fancytree/src/skin-xp/ui.fancytree.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="/media/css/prettify.css">
+        <link type="text/css" rel="stylesheet" href="/media/css/sample.css">
+
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+        <link href="http://wwwendt.de/tech/fancytree/src/skin-win8/ui.fancytree.css" rel="stylesheet">
+        <link href="http://wwwendt.de/tech/fancytree/src/skin-vista/ui.fancytree.css" rel="stylesheet">
+        <link href="http://wwwendt.de/tech/fancytree/src/skin-xp/ui.fancytree.css" rel="stylesheet">
+        <link href="http://wwwendt.de/tech/fancytree/src/skin-vista/ui.fancytree.css" rel="stylesheet">
+        Start_Exclude: This block is not part of the sample code
+    	<link href="http://wwwendt.de/tech/fancytree/lib/prettify.css" rel="stylesheet">
+    	<link href="http://wwwendt.de/tech/fancytree/demo/sample.css" rel="stylesheet">-->
+
+        <!--Js Files -->
+        <script type="text/javascript" src="/media/js/input.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+        <!--<script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>-->
+        <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+
+        <!-- File Folder Tree Structure Js Files -->
+    	<script src="http://wwwendt.de/tech/fancytree/src/jquery.fancytree.js"></script>
+    	<script src="http://wwwendt.de/tech/fancytree/src/jquery.fancytree.table.js"></script>
+    	<script src="http://wwwendt.de/tech/fancytree/lib/prettify.js"></script>
+    	<script src="http://wwwendt.de/tech/fancytree/demo/sample.js"></script>
+
+    </head>
+    <body>
+
+        <header id="top">
+			<div class="row">
+				<div class="col-twelve">
+
+					<!-- Page Title -->
+					<div class="page-title">Expert Cluster View</div>
+
+
+                        <form method="post" enctype="multipart/form-data">
+                        	{% csrf_token %}
+                        	<div class="form">
+                        	<input type="file" name="myfile" id="myfile" class="file-input-form">
+                        	<label for="myfile" class="file-input-form-label">
+                        	    <img src="/media/img/upload-button-grey.png" />
+                        	    Choose file
+                        	</label>
+                        	</div>
+                        	<button type="submit" class="upload-button">Upload</button>
+                        </form>
+
+
+                    {% if uploaded_file_url %}
+                    	<p>success</a></p>
+                    {% endif %}
+
+
+					<!-- Top Nav -->
+					<nav id="nav-wrap" class="template-current">
+						<ul id="nav" class="sf-menu sf-js-enabled" style="touch-action: pan-y;">
+							<li class="selected">
+								<a href='{% url 'home' %}'>Attributes</a>
+							</li>
+							<li class="">
+								<a href='{% url 'graph2' %}'>Clusters</a>
+							</li>
+						</ul>
+					</nav>
+					<!-- Top Nav End-->
+
+				</div>
+			</div>
+		</header>
+
+        <!--<div class="container">
+            <h3>Tabs With Dropdown Menu</h3>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href='{% url 'home' %}'>Attributes</a></a></li>
+                <li class="active"><a href='{% url 'graph2' %}'>Clusters</a></a></li>
+                <!--KG171111    <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href='{% url 'graph2' %}'>Clusters<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><a href='{% url 'graph2' %}'>graph2</a></li>
+                <li><a href='{% url 'graph2' %}'>graph3</a></li>
+
+                </ul>
+                </li>
+
+            </ul>
+        </div>-->
+
+        <content>
+			<div class="content">
+			    {% if graph %}
+				<div id="plot-container" class="plot_container">
+				    {{ graph|safe }}
+				</div>
+
+    			<div class="file-folder-container">
+                    <div style="width:100;height:100">
+            	        <h1>Table Extension</h1>
+            	        <div align='right' class="description">
+            	    </div>
+
+                	<div class="skin-container">
+                		<label for="skinswitcher">Skin:</label> <select id="skinswitcher"></select>
+                	</div>
+
+                	<!-- Add a <table> element where the tree should appear: -->
+                	<table id="treetable">
+                		<colgroup>
+                		<col width="30px"></col>
+                		<col width="30px"></col>
+                		<col width="*"></col>
+                		<col width="50px"></col>
+                		<col width="30px"></col>
+                		</colgroup>
+                		<thead>
+                			<tr> <th></th> <th>#</th> <th></th> <th>Key</th> <th>Like</th> </tr>
+                		</thead>
+                		<tbody>
+                		</tbody>
+                	</table>
+
+                	<!-- Start_Exclude: This block is not part of the sample code -->
+
+                	<pre id="sourceCode" class="prettyprint" style="display:none"></pre>
+                	<!-- End_Exclude -->
+
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="grid-container">
+                    <div id="grid" style="width: 70%; height: 350px;"></div>
+                </div>
+
+            </div>
+
+		</content>
+
+        <script type="text/javascript">
+            {% autoescape off %}
+            var json_data =  {{ df|safe }};
+            var json_data2 = {{ df2|safe }};
+            var json_data3 = {{ df3|safe }};
+            {% endautoescape %}
+            $(function () {
+                $('#grid').w2grid({
+
+                    name: 'grid',
+                    // need this to avoid 412 error on Safari
+                    columns: [
+                    // { field: 'recid', caption: 'RecID',size: '20%' },
+                    { field: 'Species', caption: 'Species' },
+                    { field: 'SepalLength', caption: 'SepalLength' },
+                    { field: 'PetalWidth', caption: 'PetalWidth' },
+                    { field: 'PetalLength', caption: 'PetalLength'},
+                    { field: 'PetalWidth', caption: 'PetalWidth'},
+                    ],
+
+
+                    records: [
+                    { recid: 1,Species:'setosa', SepalLength: '', PetalWidth: '', PetalLength: '', PetalWidth: '',w2ui: { children: json_data }},
+                    { recid: 2,Species:'versicolor', SepalLength: '', PetalWidth: '', PetalLength: '', PetalWidth: '',w2ui: { children: json_data2 }},
+                    { recid: 3,Species:'virginica', SepalLength: '', PetalWidth: '', PetalLength: '', PetalWidth: '',w2ui: { children: json_data3 }}
+                    ]
+
+                    //json_data
+                    });
+            });
+        </script>
+
+        <script type="text/javascript">
+        	$(function(){
+        		// Attach the fancytree widget to an existing <div id="tree"> element
+        		// and pass the tree options as an argument to the fancytree() function:
+        		$("#treetable").fancytree({
+        			extensions: ["table"],
+        			checkbox: true,
+        			table: {
+        				indentation: 20,      // indent 20px per node level
+        				nodeColumnIdx: 2,     // render the node title into the 2nd column
+        				checkboxColumnIdx: 0  // render the checkboxes into the 1st column
+        			},
+        			source: {
+        				url: "sample-data-table.json"
+        			},
+        			lazyLoad: function(event, data) {
+        				data.result = {url: "http://wwwendt.de/tech/fancytree/demo/ajax-sub2.json"}
+        			},
+        			renderColumns: function(event, data) {
+        				var node = data.node,
+        					$tdList = $(node.tr).find(">td");
+        				// (index #0 is rendered by fancytree by adding the checkbox)
+        				$tdList.eq(1).text(node.getIndexHier()).addClass("alignRight");
+        				// (index #2 is rendered by fancytree)
+        				$tdList.eq(3).text(node.key);
+        				$tdList.eq(4).html("<input type='checkbox' name='like' value='" + node.key + "'>");
+        			}
+        		});
+        		/* Handle custom checkbox clicks */
+        		$("#treetable").delegate("input[name=like]", "click", function(e){
+        			var node = $.ui.fancytree.getNode(e),
+        			   $input = $(e.target);
+        			e.stopPropagation();  // prevent fancytree activate for this row
+        			if($input.is(":checked")){
+        				alert("like " + $input.val());
+        			}else{
+        				alert("dislike " + $input.val());
+        			}
+        		});
+        	});
+        </script>
+
+    </body>
+
+    <footer style="text-align:center;">
+	    <a href="{% url 'home' %}" style="color:#FFFFFF;">
+	        Return to table
+	    </a>
+	</footer>
+
+</html>

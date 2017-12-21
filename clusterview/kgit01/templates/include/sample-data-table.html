@@ -1,0 +1,39 @@
+<head>
+    <title>W2UI Demo: grid-1</title>
+    <script 
+
+src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" 
+
+src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" 
+
+href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+</head>
+<body>
+
+<div id="grid" style="width: 59%; height: 350px;"></div>
+
+<script type="text/javascript">
+$(function () {
+    $('#grid').w2grid({ 
+        name: 'grid', 
+        url: 'sample-data-table.json',
+        method: 'GET'
+        // need this to avoid 412 error on Safari
+        columns: [                
+            
+            { field: 'SepalLength', caption: 'SepalLength', size: '30%' },
+            { field: 'PetalWidth', caption: 'PetalWidth', size: '40%' },
+            { field: 'PetalLength', caption: 'PetalLength', size: '120px' },
+            { field: 'PetalWidth', caption: 'PetalWidth', size: '120px' },
+            { field: 'Species', caption: 'Species', size: '120px' },
+
+
+        ]
+    });    
+});
+</script>
+
+</body>
+</html>

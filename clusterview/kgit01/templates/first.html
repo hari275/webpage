@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>cluster app</title>
+	<meta charset="utf-8" />
+<!--{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'kgit01/css/bootstrap.min.css' %}" type = "text/css"/>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0"> -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+		html,
+		body {
+		  height:100%;width:100;
+		}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 15%;}
+.col-4 {width: 0%;}
+.col-5 {width: 0%;}
+.col-6 {width: 0%;}
+.col-7 {width: 0%;}
+.col-8 {width: 0%;}
+.col-9 {width: 75%;}
+.col-10 {width: 0%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+.header {text-align: center;
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+    background-color: #0099cc;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ClusterView</h1>
+</div>
+
+<div class="row">
+
+<div class="col-3 menu">
+ <li><a href='kgit01/home' class="button">table</a></li>
+				<li><a href='kgit01/upload1' class="button">upload1</button></a>
+				<li><a href='kgit01/graph' class="button">graph</button></a>
+                                <li><a href='kgit01/graph2' class="button">graph2</a></li>
+                                <li><a href='kgit01/graph3' class="button">graph3</a></li>
+			  </ul>
+</div>
+
+<div class="col-9">
+
+
+{% block content %}
+{% endblock %}
+</div>
+
+</body>
+</html>

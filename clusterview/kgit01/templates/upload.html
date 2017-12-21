@@ -1,0 +1,32 @@
+ {% extends "first.html" %}
+
+  <!--{% include 'first.html' %}-->
+
+
+{% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>success</a></p>
+  {% endif %}
+
+
+
+<div class="container">
+  <h3>Pills</h3>
+  <ul class="nav nav-pills">
+    <li class="active"><a href="kgit01/graph3">attributes</a></li>
+    <li><a href="kgit01/graph2">treeview</a></li>
+   
+  </ul>
+</div>
+
+
+{% include 'footer.html' %}
+{% endblock %}
